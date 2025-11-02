@@ -42,7 +42,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{
               duration: 2.5,
-              delay: 0.5,
+              delay: 0.4,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="flex items-center justify-center"
