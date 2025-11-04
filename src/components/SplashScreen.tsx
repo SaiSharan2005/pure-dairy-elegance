@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -48,7 +49,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             className="flex items-center justify-center"
           >
             <img
-              src="/src/assets/logo.png"
+              src={logo}
               alt="Logo"
               className="w-96 h-96 object-contain"
             />
