@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Facebook, Instagram } from "lucide-react";
 import logo from "@/assets/logo.png";
 
-const Header = () => {
+interface HeaderProps {
+  isVisible?: boolean;
+}
+
+const Header = ({ isVisible = true }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
-      <div className="relative bg-[#1e5a8e] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
-        <div className="w-full h-[90px] flex items-center justify-between px-[60px]">
+      <div className="relative bg-[rgb(1,62,139)] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
+        <div className="w-full h-[150px] flex items-center justify-between px-[60px]">
           {/* Logo Section - Left */}
           <div className="flex items-center">
             <div className="logo">
               <a href="#home">
-                <img src={logo} alt="PURA - Absolute Purity" className="h-[60px] w-auto" />
+                <img src={logo} alt="PURA - Absolute Purity" className="h-[140px] w-auto" />
               </a>
             </div>
           </div>
@@ -184,8 +188,8 @@ const Header = () => {
             preserveAspectRatio="none"
           >
             <path
-              d="M0,20 Q360,50 720,70 Q1080,90 1440,100 L1440,0 L0,0 Z"
-              fill="#1e5a8e"
+              d="M0,100 Q360,20 720,10 Q1080,20 1260,60 Q1350,80 1440,40 L1440,0 L0,0 Z"
+              fill="rgb(1,62,139)"
             />
           </svg>
         </div>
