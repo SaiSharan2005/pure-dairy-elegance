@@ -56,16 +56,20 @@ const Products = () => {
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
             >
-              <Card className="overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
-              <div className={`bg-gradient-to-br ${product.color} p-8 flex items-center justify-center min-h-[300px]`}>
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="h-72 w-auto object-contain drop-shadow-2xl"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-3">{product.name}</h3>
+              <Card className="overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                <div className={`bg-gradient-to-br ${product.color} p-8 flex items-center justify-center min-h-[350px]`}>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="max-h-[280px] w-auto object-contain drop-shadow-2xl"
+                    loading="lazy"
+                    onError={(e) => {
+                      console.error(`Failed to load image for ${product.name}:`, product.image);
+                    }}
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold text-foreground mb-3">{product.name}</h3>
                   <p className="text-muted-foreground">{product.description}</p>
                 </CardContent>
               </Card>
