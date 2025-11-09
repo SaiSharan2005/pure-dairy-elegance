@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Facebook, Instagram } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-trans.png";
 
 interface HeaderProps {
   isVisible?: boolean;
@@ -12,12 +12,12 @@ const Header = ({ isVisible = true }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
       <div className="relative bg-[rgb(1,62,139)] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
-        <div className="w-full h-[150px] flex items-center justify-between px-[60px]">
+        <div className="w-full h-[100px] flex items-center justify-between px-[50px]">
           {/* Logo Section - Left */}
-          <div className="flex items-center">
+          <div className="flex items-center mt-19">
             <div className="logo">
               <a href="#home">
-                <img src={logo} alt="PURA - Absolute Purity" className="h-[140px] w-auto" />
+                <img src={logo} alt="PURA - Absolute Purity" className="h-[100px] w-auto" />
               </a>
             </div>
           </div>

@@ -8,38 +8,102 @@ interface VideoBackgroundProps {
 
 const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!hasScrolled) {
+    const handleWheel = (e: WheelEvent) => {
+      // Detect downward scroll (deltaY > 0)
+      if (e.deltaY > 0 && !hasScrolled) {
         setHasScrolled(true);
         onScroll();
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleTouch = (e: TouchEvent) => {
+      const touchStart = e.touches[0].clientY;
+
+      const handleTouchMove = (moveEvent: TouchEvent) => {
+        const touchEnd = moveEvent.touches[0].clientY;
+        // Detect upward swipe (scrolling down)
+        if (touchStart - touchEnd > 50 && !hasScrolled) {
+          setHasScrolled(true);
+          onScroll();
+          window.removeEventListener("touchmove", handleTouchMove);
+        }
+      };
+
+      window.addEventListener("touchmove", handleTouchMove);
+      setTimeout(() => {
+        window.removeEventListener("touchmove", handleTouchMove);
+      }, 500);
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    window.addEventListener("touchstart", handleTouch, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouch);
+    };
   }, [hasScrolled, onScroll]);
 
   return (
-    <div className="fixed inset-0 w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden bg-black">
       {/* Video Background */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        preload="auto"
+        className="w-full h-full object-cover"
+        onLoadedData={() => {
+          console.log("Video loaded successfully");
+          setVideoLoaded(true);
+        }}
+        onError={(e) => {
+          console.error("Video failed to load:", e);
+          setVideoError(true);
+        }}
+        onCanPlay={(e) => {
+          console.log("Video can play");
+          const video = e.currentTarget;
+          video.play().catch((err) => {
+            console.error("Video play failed:", err);
+          });
+        }}
+        onLoadStart={() => console.log("Video load started")}
+        onProgress={(e) => {
+          const video = e.currentTarget;
+          if (video.buffered.length > 0) {
+            console.log("Video buffering:", (video.buffered.end(0) / video.duration) * 100, "%");
+          }
+        }}
       >
-        <source src="/gaushala.mp4" type="video/mp4" />
+        {/* <source src="/gaushala.mp4" type="video/mp4" /> */}
+        <source src="gaushala.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
+      {/* Loading/Error State */}
+      {!videoLoaded && !videoError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black">
+          <div className="text-white text-lg">Loading video...</div>
+        </div>
+      )}
+
+      {videoError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black">
+          <div className="text-white text-lg">Video could not be loaded</div>
+        </div>
+      )}
+
       {/* Dark Overlay for better logo visibility */}
-      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="absolute inset-0 bg-black/30 top-0 left-0 right-0 bottom-0"></div>
 
       {/* Centered Logo in Middle of Screen */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center top-0 left-0 right-0 bottom-0">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -48,7 +112,7 @@ const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
           <img
             src={logo}
             alt="Logo"
-            className="h-96 w-auto object-contain"
+            className="h-32 w-auto object-contain"
           />
         </motion.div>
       </div>
@@ -57,7 +121,7 @@ const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="fixed bottom-20 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
       >
         <svg
           className="w-6 h-6 text-white opacity-70"
