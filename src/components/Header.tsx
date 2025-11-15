@@ -179,7 +179,8 @@ const Header = ({ isVisible = true }: HeaderProps) => {
         )}
 
         {/* Curved Bottom Wave */}
-        <div className="absolute bottom-0 left-0 right-0 transform translate-y-full -mt-1">
+        <div className="absolute bottom-0 left-0 right-0 translate-y-[calc(100%-2px)]">
+        {/* <div className="absolute bottom-0 left-0 right-0 transform translate-y-full -mt-1"> */}
           <svg
             viewBox="0 0 1440 100"
             fill="none"

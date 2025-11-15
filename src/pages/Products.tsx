@@ -1,7 +1,5 @@
 import { ProductCarousel } from "@/components/ProductCarousel";
 
-const Products = () => {
+export default function Products() {
   return <ProductCarousel />;
-};
-
-export default Products;
+}

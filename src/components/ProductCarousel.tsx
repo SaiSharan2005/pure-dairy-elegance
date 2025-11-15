@@ -10,14 +10,14 @@ const products = [
     id: 1,
     name: "Almond",
     color: "almond",
-    textColor: "text-amber-700",
+    textColor: "text-almond",
     ingredient: almond,
   },
   {
     id: 2,
     name: "Walnut",
     color: "walnut",
-    textColor: "text-blue-700",
+    textColor: "text-walnut",
     ingredient: walnut,
   },
 ];
@@ -47,32 +47,23 @@ export const ProductCarousel = () => {
   const currentProduct = products[currentIndex];
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100">
+    <div className="relative min-h-screen w-full overflow-hidden bg-background">
       {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200" />
+      <div className="absolute inset-0 bg-gradient-radial from-background via-background to-muted/30" />
 
       {/* Header */}
-      <header className="relative z-20 flex items-center justify-between px-8 py-6 bg-white/50 backdrop-blur-md border-b border-slate-200/50">
+      <header className="relative z-20 flex items-center justify-between px-8 py-6">
         <div className="flex items-center gap-2">
-          <div className="h-10 w-8 rounded-lg bg-blue-600" />
-          <span className="font-bold text-lg text-slate-900">Pure Dairy</span>
+          <div className="h-10 w-8 rounded-lg bg-foreground" />
         </div>
-        <nav className="flex gap-12 text-sm font-medium text-slate-700">
-          <button className="hover:text-slate-900 transition-colors">
-            Products
-          </button>
-          <button className="hover:text-slate-900 transition-colors">
-            About
-          </button>
-          <button className="hover:text-slate-900 transition-colors">
-            Partnership
-          </button>
-          <button className="hover:text-slate-900 transition-colors">
-            Contact
-          </button>
+        <nav className="flex gap-12 text-sm font-medium text-foreground/70">
+          <button className="hover:text-foreground transition-colors">Products</button>
+          <button className="hover:text-foreground transition-colors">About</button>
+          <button className="hover:text-foreground transition-colors">Partnership</button>
+          <button className="hover:text-foreground transition-colors">Contact</button>
         </nav>
-        <button className="rounded-full p-2 hover:bg-slate-200/50 transition-colors">
-          <ShoppingCart className="h-6 w-6 text-slate-900" />
+        <button className="rounded-full p-2 hover:bg-foreground/5 transition-colors">
+          <ShoppingCart className="h-6 w-6 text-foreground" />
         </button>
       </header>
 
@@ -101,7 +92,7 @@ export const ProductCarousel = () => {
               style={{
                 animationDelay: "0s",
                 transitionDelay: isTransitioning ? "0ms" : "200ms",
-                animation: isTransitioning ? "none" : undefined,
+                animation: isTransitioning ? 'none' : undefined
               }}
             />
             <img
@@ -113,7 +104,7 @@ export const ProductCarousel = () => {
               style={{
                 animationDelay: "1s",
                 transitionDelay: isTransitioning ? "100ms" : "300ms",
-                animation: isTransitioning ? "none" : undefined,
+                animation: isTransitioning ? 'none' : undefined
               }}
             />
             <img
@@ -125,7 +116,7 @@ export const ProductCarousel = () => {
               style={{
                 animationDelay: "2s",
                 transitionDelay: isTransitioning ? "200ms" : "400ms",
-                animation: isTransitioning ? "none" : undefined,
+                animation: isTransitioning ? 'none' : undefined
               }}
             />
             <img
@@ -137,7 +128,7 @@ export const ProductCarousel = () => {
               style={{
                 animationDelay: "0.5s",
                 transitionDelay: isTransitioning ? "50ms" : "250ms",
-                animation: isTransitioning ? "none" : undefined,
+                animation: isTransitioning ? 'none' : undefined
               }}
             />
             <img
@@ -149,7 +140,7 @@ export const ProductCarousel = () => {
               style={{
                 animationDelay: "1.5s",
                 transitionDelay: isTransitioning ? "150ms" : "350ms",
-                animation: isTransitioning ? "none" : undefined,
+                animation: isTransitioning ? 'none' : undefined
               }}
             />
             <img
@@ -161,7 +152,7 @@ export const ProductCarousel = () => {
               style={{
                 animationDelay: "2.5s",
                 transitionDelay: isTransitioning ? "250ms" : "450ms",
-                animation: isTransitioning ? "none" : undefined,
+                animation: isTransitioning ? 'none' : undefined
               }}
             />
           </div>
@@ -171,9 +162,9 @@ export const ProductCarousel = () => {
             <button
               onClick={prevSlide}
               disabled={isTransitioning}
-              className="rounded-full bg-white/80 p-3 backdrop-blur-sm hover:bg-white transition-all hover:scale-110 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-full bg-card/80 p-3 backdrop-blur-sm hover:bg-card transition-all hover:scale-110 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <ChevronLeft className="h-6 w-6 text-slate-900" />
+              <ChevronLeft className="h-6 w-6 text-foreground" />
             </button>
 
             <div className="relative" key={`bottle-${currentProduct.id}`}>
@@ -184,15 +175,15 @@ export const ProductCarousel = () => {
                   isTransitioning ? "opacity-0 scale-90" : "opacity-100 scale-100"
                 }`}
               />
-              <div
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-1000 ${
-                  isTransitioning
-                    ? "opacity-0 scale-75 rotate-45"
-                    : "opacity-100 scale-100 rotate-0"
-                }`}
-              >
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-xl">
-                  <img src={currentProduct.ingredient} alt="" className="h-12 w-12" />
+              <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-1000 ${
+                isTransitioning ? "opacity-0 scale-75 rotate-45" : "opacity-100 scale-100 rotate-0"
+              }`}>
+                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-card/90 backdrop-blur-sm shadow-xl">
+                  <img
+                    src={currentProduct.ingredient}
+                    alt=""
+                    className="h-12 w-12"
+                  />
                 </div>
               </div>
             </div>
@@ -200,9 +191,9 @@ export const ProductCarousel = () => {
             <button
               onClick={nextSlide}
               disabled={isTransitioning}
-              className="rounded-full bg-white/80 p-3 backdrop-blur-sm hover:bg-white transition-all hover:scale-110 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-full bg-card/80 p-3 backdrop-blur-sm hover:bg-card transition-all hover:scale-110 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <ChevronRight className="h-6 w-6 text-slate-900" />
+              <ChevronRight className="h-6 w-6 text-foreground" />
             </button>
           </div>
 
@@ -210,7 +201,7 @@ export const ProductCarousel = () => {
           <div className="mt-12 flex justify-center">
             <Button
               variant="outline"
-              className="rounded-full px-8 py-6 text-base font-medium hover:bg-slate-900 hover:text-white transition-all border-slate-900/30"
+              className="rounded-full px-8 py-6 text-base font-medium hover:bg-foreground hover:text-background transition-all"
             >
               Shop now
             </Button>
@@ -221,15 +212,11 @@ export const ProductCarousel = () => {
             {products.map((_, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  if (!isTransitioning) {
-                    setCurrentIndex(index);
-                  }
-                }}
+                onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all ${
                   index === currentIndex
-                    ? "w-8 bg-slate-900"
-                    : "w-2 bg-slate-900/30 hover:bg-slate-900/50"
+                    ? "w-8 bg-foreground"
+                    : "w-2 bg-foreground/30 hover:bg-foreground/50"
                 }`}
               />
             ))}
