@@ -8,20 +8,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import SplashScreen from "./components/SplashScreen";
-import VideoBackground from "./components/VideoBackground";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true);
-  const [showContent, setShowContent] = useState(false);
 
   if (showSplash) {
     return <SplashScreen onComplete={() => setShowSplash(false)} />;
-  }
-
-  if (!showContent) {
-    return <VideoBackground onScroll={() => setShowContent(true)} />;
   }
 
   return (
