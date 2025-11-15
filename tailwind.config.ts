@@ -115,8 +115,8 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        float: "float 5s ease-in-out infinite",
-        "float-slow": "float-slow 8s ease-in-out infinite",
+        float: "float 8s ease-in-out infinite",
+        "float-slow": "float-slow 12s ease-in-out infinite",
         "fade-in": "fade-in 0.5s ease-out",
         "slide-up": "slide-up 0.6s ease-out",
       },
