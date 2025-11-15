@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
@@ -33,7 +34,7 @@ export const ProductCarousel = () => {
     setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % products.length);
       setIsTransitioning(false);
-    }, 1500);
+    }, 600);
   };
 
   const prevSlide = () => {
@@ -42,7 +43,7 @@ export const ProductCarousel = () => {
     setTimeout(() => {
       setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
       setIsTransitioning(false);
-    }, 1500);
+    }, 600);
   };
 
   const currentProduct = products[currentIndex];
@@ -61,10 +62,7 @@ export const ProductCarousel = () => {
         <div className="relative flex-1 w-full flex flex-col items-center justify-center">
           {/* Large Text Background */}
           <h1
-            className={`absolute left-1/2 -translate-x-1/2 text-[16rem] font-black leading-none pointer-events-none select-none transition-all duration-1000 ${
-              isTransitioning ? "opacity-0 scale-95 translate-y-8" : "opacity-90 scale-100 translate-y-0"
-            }`}
-            key={currentProduct.id}
+            className="absolute left-1/2 -translate-x-1/2 text-[16rem] font-black leading-none pointer-events-none select-none"
             style={{
               letterSpacing: "0.22em",
               color: currentProduct.textColor === "text-almond" ? "#8B6F47" : "#5B5D5F"
@@ -73,26 +71,26 @@ export const ProductCarousel = () => {
             {currentProduct.name}
           </h1>
 
-          {/* Floating Ingredients */}
-          <div className="absolute inset-0" style={{ height: "100vh" }} key={`ingredients-${currentProduct.id}`}>
-            <img src={currentProduct.ingredient} alt="" className={`absolute h-[500px] w-[500px] animate-float opacity-75 scale-75 transition-all duration-1000 ease-in-out ${
-              isTransitioning ? "translate-y-[-100vh] opacity-0" : "translate-y-0"
-            }`} style={{ left: "-7.5%", top: "2.5%", animationDelay: "0s", animationDuration: "3s" }} />
-            <img src={currentProduct.ingredient} alt="" className={`absolute h-[500px] w-[500px] animate-float-slow opacity-75 scale-75 transition-all duration-1000 ease-in-out ${
-              isTransitioning ? "translate-y-[-100vh] opacity-0" : "translate-y-0"
-            }`} style={{ right: "-10%", top: "0.5%", animationDelay: "0.5s", animationDuration: "4s" }} />
-            <img src={currentProduct.ingredient} alt="" className={`absolute h-[500px] w-[500px] animate-float opacity-75 scale-75 transition-all duration-1000 ease-in-out ${
-              isTransitioning ? "translate-y-[-100vh] opacity-0" : "translate-y-0"
-            }`} style={{ left: "1%", bottom: "5%", animationDelay: "0.3s", animationDuration: "3.5s" }} />
-            <img src={currentProduct.ingredient} alt="" className={`absolute h-[500px] w-[500px] animate-float-slow opacity-75 scale-75 transition-all duration-1000 ease-in-out ${
-              isTransitioning ? "translate-y-[-100vh] opacity-0" : "translate-y-0"
-            }`} style={{ right: "1.5%", bottom: "-1%", animationDelay: "0.8s", animationDuration: "4.5s" }} />
-            <img src={currentProduct.ingredient} alt="" className={`absolute h-[500px] w-[500px] animate-float opacity-70 scale-75 transition-all duration-1000 ease-in-out ${
-              isTransitioning ? "translate-y-[-100vh] opacity-0" : "translate-y-0"
-            }`} style={{ right: "10%", top: "-15%", animationDelay: "0.2s", animationDuration: "3.2s" }} />
-          </div>
+          {/* Floating Ingredients - ONLY THIS ANIMATES */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentProduct.id}
+              initial={{ y: "100vh", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "-100vh", opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="absolute inset-0 overflow-hidden"
+              style={{ height: "100vh" }}
+            >
+              <img src={currentProduct.ingredient} alt="" className="absolute h-[500px] w-[500px] animate-float opacity-75 transition-all duration-1000 ease-in-out translate-y-[100vh] scale-75" style={{ left: "-7.5%", top: "2.5%", transitionDelay: "200ms", animationDelay: "0s", animationDuration: "3s" }} />
+              <img src={currentProduct.ingredient} alt="" className="absolute h-[500px] w-[500px] animate-float-slow opacity-75 transition-all duration-1000 ease-in-out translate-y-[100vh] scale-75" style={{ right: "-10%", top: "0.5%", transitionDelay: "300ms", animationDelay: "0.5s", animationDuration: "4s" }} />
+              <img src={currentProduct.ingredient} alt="" className="absolute h-[500px] w-[500px] animate-float opacity-75 transition-all duration-1000 ease-in-out translate-y-[100vh] scale-75" style={{ left: "1%", bottom: "5%", transitionDelay: "400ms", animationDelay: "0.3s", animationDuration: "3.5s" }} />
+              <img src={currentProduct.ingredient} alt="" className="absolute h-[500px] w-[500px] animate-float-slow opacity-75 transition-all duration-1000 ease-in-out translate-y-[100vh] scale-75" style={{ right: "1.5%", bottom: "-1%", transitionDelay: "250ms", animationDelay: "0.8s", animationDuration: "4.5s" }} />
+              <img src={currentProduct.ingredient} alt="" className="absolute h-[500px] w-[500px] animate-float opacity-70 transition-all duration-1000 ease-in-out translate-y-[100vh] scale-75" style={{ right: "10%", top: "-15%", transitionDelay: "450ms", animationDelay: "0.2s", animationDuration: "3.2s" }} />
+            </motion.div>
+          </AnimatePresence>
 
-          {/* Center Product */}
+          {/* Center Product - STAYS FIXED, NO ANIMATION */}
           <div className="relative z-20 inline-flex items-center justify-center">
             <button
               onClick={prevSlide}
@@ -103,13 +101,11 @@ export const ProductCarousel = () => {
               <ChevronLeft className="h-6 w-6 text-foreground" />
             </button>
 
-            <div className="relative" key={`bottle-${currentProduct.id}`}>
+            <div className="relative">
               <img
                 src={milkBottle}
                 alt={`${currentProduct.name} Milk`}
-                className={`h-[600px] w-auto drop-shadow-2xl transition-all duration-1000 ${
-                  isTransitioning ? "opacity-0 scale-90" : "opacity-100 scale-100"
-                }`}
+                className="h-[600px] w-auto drop-shadow-2xl"
               />
             </div>
 
