@@ -78,6 +78,14 @@ const Header = ({ isVisible = true }: HeaderProps) => {
               <a href="#contact" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
                 Reach Us
               </a>
+              <button
+                onClick={() => {
+                  window.location.href = "/collections/all";
+                }}
+                className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]"
+              >
+                Shop Now
+              </button>
             </nav>
           </div>
 
@@ -174,6 +182,15 @@ const Header = ({ isVisible = true }: HeaderProps) => {
               >
                 Reach Us
               </a>
+              <button
+                onClick={() => {
+                  window.location.href = "/collections/all";
+                  setIsMenuOpen(false);
+                }}
+                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
+              >
+                Shop Now
+              </button>
             </div>
           </div>
         )}

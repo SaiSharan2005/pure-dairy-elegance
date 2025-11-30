@@ -138,12 +138,14 @@ export const ProductCarousel = () => {
           </div>
 
           {/* Shop Now Button */}
-          <Button
-            variant="outline"
-            className="rounded-full px-8 py-6 text-base font-medium hover:bg-foreground hover:text-background transition-all"
+          <button
+            onClick={() => {
+              window.location.href = "/collections/all";
+            }}
+            className="rounded-full px-8 py-6 text-base font-medium border border-foreground text-foreground hover:bg-foreground hover:text-background transition-all"
           >
             Shop now
-          </Button>
+          </button>
         </div>
       </div>
     </div>
