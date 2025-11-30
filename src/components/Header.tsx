@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Facebook, Instagram } from "lucide-react";
 import logo from "@/assets/logo-trans.png";
+import logoVideo from "/logo -animation.mp4";
 
 interface HeaderProps {
   isVisible?: boolean;
@@ -8,6 +9,42 @@ interface HeaderProps {
 
 const Header = ({ isVisible = true }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showStaticLogo, setShowStaticLogo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    let loopTimeout: NodeJS.Timeout;
+
+    if (video) {
+      // Start video after 2 seconds initially
+      const startTimeout = setTimeout(() => {
+        setShowStaticLogo(false);
+        video.currentTime = 0;
+        video.play();
+      }, 2000);
+
+      const handleEnded = () => {
+        // Show static logo when video ends
+        setShowStaticLogo(true);
+
+        // After 2 seconds, play video again
+        loopTimeout = setTimeout(() => {
+          setShowStaticLogo(false);
+          video.currentTime = 0;
+          video.play();
+        }, 2000);
+      };
+
+      video.addEventListener('ended', handleEnded);
+
+      return () => {
+        clearTimeout(startTimeout);
+        clearTimeout(loopTimeout);
+        video.removeEventListener('ended', handleEnded);
+      };
+    }
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
@@ -16,8 +53,21 @@ const Header = ({ isVisible = true }: HeaderProps) => {
           {/* Logo Section - Left */}
           <div className="flex items-center mt-19">
             <div className="logo">
-              <a href="#home">
-                <img src={logo} alt="PURA - Absolute Purity" className="h-[100px] w-auto" />
+              <a href="#home" className="relative block h-[100px] overflow-visible">
+                {/* Video Logo - plays first */}
+                <video
+                  ref={videoRef}
+                  src={logoVideo}
+                  muted
+                  playsInline
+                  className={`h-[150px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                />
+                {/* Static Logo - shows after video ends */}
+                <img
+                  src={logo}
+                  alt="PURA - Absolute Purity"
+                  className={`h-[100px] w-auto transition-opacity duration-500 ${showStaticLogo ? 'opacity-100' : 'opacity-0'}`}
+                />
               </a>
             </div>
           </div>
