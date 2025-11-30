@@ -24,7 +24,11 @@ const products = [
   },
 ];
 
-export const ProductCarousel = () => {
+interface ProductCarouselProps {
+  showHeader?: boolean;
+}
+
+export const ProductCarousel = ({ showHeader = true }: ProductCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -49,15 +53,15 @@ export const ProductCarousel = () => {
   const currentProduct = products[currentIndex];
 
   return (
-    <div className="relative w-screen min-h-screen overflow-hidden bg-background">
+    <div id="products" className="relative w-screen h-[90vh] overflow-hidden bg-background snap-section">
       {/* Header */}
-      <Header />
+      {showHeader && <Header />}
 
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-radial from-background via-background to-muted/30" />
 
       {/* Main Content - Full Width */}
-      <div className="relative z-10 w-screen min-h-screen flex flex-col pt-[100px]">
+      <div className="relative z-10 w-screen h-[90vh] flex flex-col">
         {/* Center content area */}
         <div className="relative flex-1 w-full flex flex-col items-center justify-center">
           {/* Large Text Background */}

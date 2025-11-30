@@ -61,19 +61,13 @@ const Header = ({ isVisible = true }: HeaderProps) => {
                 Home
               </a>
               <a href="#about" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
-                Our Story
+                Our Vibe
               </a>
-              <a href="/products" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
+              <a href="#products" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
                 Products
               </a>
-              <a href="#customers" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
-                Our Customers
-              </a>
-              <a href="#recipes" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
-                Recipes
-              </a>
-              <a href="#blog" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
-                Blog
+              <a href="#products2" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
+                Products 2
               </a>
               <a href="#contact" className="text-white hover:text-white/80 transition-colors font-medium text-base uppercase tracking-wider border-b-2 border-transparent hover:border-[#7cb342]">
                 Reach Us
@@ -145,35 +139,21 @@ const Header = ({ isVisible = true }: HeaderProps) => {
                 className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Our Story
+                Our Vibe
               </a>
               <a
-                href="/products"
+                href="#products"
                 className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </a>
               <a
-                href="#customers"
+                href="#products2"
                 className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Our Customers
-              </a>
-              <a
-                href="#recipes"
-                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Recipes
-              </a>
-              <a
-                href="#blog"
-                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Blog
+                Products 2
               </a>
               <a
                 href="#contact"

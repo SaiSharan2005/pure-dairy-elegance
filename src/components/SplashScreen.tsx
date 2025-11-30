@@ -187,12 +187,12 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              transition={{ duration: 1, delay: 0.5 }} 
               className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
             >
               <div className="text-center px-10 py-6 backdrop-blur-md bg-black/20">
                 <h2 className="text-4xl md:text-5xl font-bold text-white whitespace-nowrap">
-                  Absolute Purity <span className="text-green-400">In Every Sip</span>
+                GrandMother’s Secret , <span className="text-green-400">Modern Purity</span>
                 </h2>
               </div>
             </motion.div>

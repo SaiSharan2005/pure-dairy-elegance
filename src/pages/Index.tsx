@@ -1,12 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
+import Features from "@/components/Features";
+import OurVibe from "@/components/OurVibe";
+import { ProductCarousel } from "@/components/ProductCarousel";
 import Products from "@/components/Products";
-import WhyUs from "@/components/WhyUs";
-import Team from "@/components/Team";
-import Vision from "@/components/Vision";
-import Regions from "@/components/Regions";
-import Certificates from "@/components/Certificates";
+import ContactUs from "@/components/ContactUs";
 import Footer from "@/components/Footer";
 
 interface IndexProps {
@@ -18,13 +16,11 @@ const Index = ({ showHeader = true }: IndexProps) => {
     <div className="min-h-screen">
       {showHeader && <Header />}
       <Hero />
-      <About />
+      <Features />
+      <OurVibe />
+      <ProductCarousel showHeader={false} />
       <Products />
-      <WhyUs />
-      <Team />
-      <Vision />
-      <Regions />
-      <Certificates />
+      <ContactUs />
       <Footer />
     </div>
   );
