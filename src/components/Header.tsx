@@ -52,24 +52,24 @@ const Header = ({ isVisible = true }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
       <div className="relative bg-[rgb(1,62,139)] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
-        <div className="w-full h-[85px] sm:h-[95px] md:h-[105px] lg:h-[115px] flex items-center justify-between pl-0 pr-2 sm:pr-3 md:pr-[15px]">
+        <div className="w-full h-[60px] sm:h-[75px] md:h-[105px] lg:h-[115px] flex items-center justify-between pl-0 pr-2 sm:pr-3 md:pr-[15px]">
           {/* Logo Section - Left */}
           <div className="flex items-center">
             <div className="logo">
-              <a href="#home" className="relative block h-[85px] sm:h-[95px] md:h-[105px] lg:h-[115px] overflow-visible">
+              <a href="#home" className="relative block h-[60px] sm:h-[75px] md:h-[105px] lg:h-[115px] overflow-visible">
                 {/* Video Logo - plays first */}
                 <video
                   ref={videoRef}
                   src={logoVideoUrl}
                   muted
                   playsInline
-                  className={`h-[70px] sm:h-[90px] md:h-[130px] lg:h-[160px] xl:h-[180px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                  className={`h-[85px] sm:h-[100px] md:h-[130px] lg:h-[160px] xl:h-[180px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 />
                 {/* Static Logo - shows after video ends */}
                 <img
                   src={logo}
                   alt="PURA - Absolute Purity"
-                  className={`h-[85px] sm:h-[95px] md:h-[105px] lg:h-[115px] w-auto transition-opacity duration-500 ${showStaticLogo ? 'opacity-100' : 'opacity-0'}`}
+                  className={`h-[60px] sm:h-[75px] md:h-[105px] lg:h-[115px] w-auto transition-opacity duration-500 ${showStaticLogo ? 'opacity-100' : 'opacity-0'}`}
                 />
               </a>
             </div>
