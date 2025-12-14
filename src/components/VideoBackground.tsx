@@ -57,7 +57,7 @@ const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <iframe
           src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
-          className="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          className="absolute top-1/2 left-1/2 w-[180%] h-[180%] sm:w-[200%] sm:h-[200%] md:w-[250%] md:h-[250%] lg:w-[300%] lg:h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           style={{ border: 'none' }}
           allow="autoplay; encrypted-media"
           allowFullScreen
@@ -85,7 +85,7 @@ const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
           <img
             src={logo}
             alt="Logo"
-            className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain"
+            className="h-28 sm:h-32 md:h-40 lg:h-48 w-auto object-contain"
           />
         </motion.div>
       </div>
