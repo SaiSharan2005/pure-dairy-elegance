@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
 const logo = `${CDN_URL}/logo-trans.png`;
-// YouTube Shorts video ID: oSt4IGNPChs
-const youtubeVideoId = "oSt4IGNPChs";
+// Shopify global CDN video - Gaushala (cattle farm)
+const splashVideoUrl = "https://cdn.shopify.com/videos/c/o/v/b3fcbbcc5dcc4a73b6350ab9536cf7ea.mp4";
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -136,7 +136,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
               </div>
             )}
 
-            {/* YouTube Video Background - Fade in during Phase 2 */}
+            {/* Shopify Video Background - Fade in during Phase 2 */}
             {logoMoving && (
               <motion.div
                 initial={{ opacity: 0 }}
@@ -144,14 +144,17 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
                 transition={{ duration: 3, delay: 0 }}
                 className="absolute inset-0 overflow-hidden"
               >
-                <iframe
-                  src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
-                  className="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                  style={{ border: 'none' }}
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                  onLoad={() => setVideoLoaded(true)}
-                />
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  onCanPlay={() => setVideoLoaded(true)}
+                  className="absolute inset-0 w-full h-full object-cover object-[center_60%]"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  <source src={splashVideoUrl} type="video/mp4" />
+                </video>
 
                 {/* Dark Overlay */}
                 <motion.div

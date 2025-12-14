@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Facebook, Instagram } from "lucide-react";
 
 const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
 const logo = `${CDN_URL}/logo-trans.png`;
-// YouTube video ID for logo animation: BBBM87jk4N4
-const logoYoutubeId = "BBBM87jk4N4";
+// Shopify global CDN video - Logo animation
+const logoVideoUrl = "https://cdn.shopify.com/videos/c/o/v/f945b142641340419028f30b04c2e23a.mp4";
 
 interface HeaderProps {
   isVisible?: boolean;
@@ -12,32 +12,64 @@ interface HeaderProps {
 
 const Header = ({ isVisible = true }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showStaticLogo, setShowStaticLogo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    let loopTimeout: NodeJS.Timeout;
+
+    if (video) {
+      // Start video after 2 seconds initially
+      const startTimeout = setTimeout(() => {
+        setShowStaticLogo(false);
+        video.currentTime = 0;
+        video.play();
+      }, 2000);
+
+      const handleEnded = () => {
+        // Show static logo when video ends
+        setShowStaticLogo(true);
+
+        // After 2 seconds, play video again
+        loopTimeout = setTimeout(() => {
+          setShowStaticLogo(false);
+          video.currentTime = 0;
+          video.play();
+        }, 2000);
+      };
+
+      video.addEventListener('ended', handleEnded);
+
+      return () => {
+        clearTimeout(startTimeout);
+        clearTimeout(loopTimeout);
+        video.removeEventListener('ended', handleEnded);
+      };
+    }
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
       <div className="relative bg-[rgb(1,62,139)] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
-        <div className="w-full h-[100px] flex items-center justify-between px-[50px]">
+        <div className="w-full h-[100px] flex items-center justify-between pl-0 pr-[15px]">
           {/* Logo Section - Left */}
           <div className="flex items-center">
             <div className="logo">
-              <a href="#home" className="relative block h-[80px] w-[200px] overflow-hidden">
-                {/* YouTube Video Logo */}
-                <style>{`
-                  .logo iframe {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%) scale(1.5);
-                    pointer-events: none;
-                    border: none;
-                    width: 200px;
-                    height: 112px;
-                  }
-                `}</style>
-                <iframe
-                  src={`https://www.youtube.com/embed/${logoYoutubeId}?autoplay=1&mute=1&loop=1&playlist=${logoYoutubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1`}
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
+              <a href="#home" className="relative block h-[100px] overflow-visible">
+                {/* Video Logo - plays first */}
+                <video
+                  ref={videoRef}
+                  src={logoVideoUrl}
+                  muted
+                  playsInline
+                  className={`h-[180px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                />
+                {/* Static Logo - shows after video ends */}
+                <img
+                  src={logo}
+                  alt="PURA - Absolute Purity"
+                  className={`h-[100px] w-auto transition-opacity duration-500 ${showStaticLogo ? 'opacity-100' : 'opacity-0'}`}
                 />
               </a>
             </div>
@@ -203,7 +235,6 @@ const Header = ({ isVisible = true }: HeaderProps) => {
 
         {/* Curved Bottom Wave */}
         <div className="absolute bottom-0 left-0 right-0 translate-y-[calc(100%-2px)]">
-        {/* <div className="absolute bottom-0 left-0 right-0 transform translate-y-full -mt-1"> */}
           <svg
             viewBox="0 0 1440 100"
             fill="none"
