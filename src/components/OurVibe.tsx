@@ -27,25 +27,25 @@ const OurVibe = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
 
           {/* Left Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8"
+            className="space-y-4 sm:space-y-6 md:space-y-8"
           >
             {/* Heading */}
-            <div className="space-y-4">
+            <div className="space-y-2 sm:space-y-3 md:space-y-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="inline-block"
               >
-                <span className="text-[#7cb342] font-semibold text-lg tracking-wider uppercase">
+                <span className="text-[#7cb342] font-semibold text-sm sm:text-base md:text-lg tracking-wider uppercase">
                   Our Story
                 </span>
               </motion.div>
@@ -54,7 +54,7 @@ const OurVibe = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-[rgb(1,62,139)] leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[rgb(1,62,139)] leading-tight"
               >
                 Our Vibe
               </motion.h2>
@@ -65,7 +65,7 @@ const OurVibe = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg md:text-xl text-gray-700 leading-relaxed"
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed"
             >
               PURA was born because we were done with fake, watered-down dairy. So we created something{" "}
               <span className="font-bold text-[rgb(1,62,139)]">real</span> — small-batch, high-care, and always pure.
@@ -75,7 +75,7 @@ const OurVibe = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-lg md:text-xl text-gray-700 leading-relaxed"
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed"
             >
               What started in{" "}
               <span className="font-semibold text-[#7cb342]">Hyderabad</span> with just{" "}
@@ -87,9 +87,9 @@ const OurVibe = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="pt-4"
+              className="pt-2 sm:pt-3 md:pt-4"
             >
-              <p className="text-2xl md:text-3xl font-bold text-[rgb(1,62,139)] italic">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[rgb(1,62,139)] italic">
                 Pure vibes, pure taste, pure PURA.
               </p>
             </motion.div>
@@ -99,19 +99,19 @@ const OurVibe = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="grid grid-cols-3 gap-6 pt-8"
+              className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 pt-4 sm:pt-6 md:pt-8"
             >
-              <div className="text-center p-4 bg-white/80 rounded-lg shadow-sm">
-                <div className="text-3xl md:text-4xl font-bold text-[#7cb342]">2023</div>
-                <div className="text-sm text-gray-600 mt-1">Founded</div>
+              <div className="text-center p-2 sm:p-3 md:p-4 bg-white/80 rounded-lg shadow-sm">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#7cb342]">2023</div>
+                <div className="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">Founded</div>
               </div>
-              <div className="text-center p-4 bg-white/80 rounded-lg shadow-sm">
-                <div className="text-3xl md:text-4xl font-bold text-[#7cb342]">5→∞</div>
-                <div className="text-sm text-gray-600 mt-1">Customers</div>
+              <div className="text-center p-2 sm:p-3 md:p-4 bg-white/80 rounded-lg shadow-sm">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#7cb342]">5→∞</div>
+                <div className="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">Customers</div>
               </div>
-              <div className="text-center p-4 bg-white/80 rounded-lg shadow-sm">
-                <div className="text-3xl md:text-4xl font-bold text-[#7cb342]">4+</div>
-                <div className="text-sm text-gray-600 mt-1">States</div>
+              <div className="text-center p-2 sm:p-3 md:p-4 bg-white/80 rounded-lg shadow-sm">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#7cb342]">4+</div>
+                <div className="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">States</div>
               </div>
             </motion.div>
           </motion.div>
@@ -121,10 +121,10 @@ const OurVibe = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="relative"
+            className="relative hidden sm:block"
           >
             {/* Decorative Elements */}
-            <div className="relative h-[500px] lg:h-[600px]">
+            <div className="relative h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[600px]">
               {/* Main Circle */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -132,7 +132,7 @@ const OurVibe = () => {
                 transition={{ duration: 1, delay: 0.4 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <div className="w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] rounded-full bg-gradient-to-br from-[rgb(1,62,139)] to-[#7cb342] opacity-10"></div>
+                <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] rounded-full bg-gradient-to-br from-[rgb(1,62,139)] to-[#7cb342] opacity-10"></div>
               </motion.div>
 
               {/* Floating Icons */}
@@ -140,9 +140,9 @@ const OurVibe = () => {
                 initial={{ y: 0 }}
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 right-10 bg-white p-6 rounded-full shadow-lg"
+                className="absolute top-4 sm:top-6 md:top-10 right-4 sm:right-6 md:right-10 bg-white p-3 sm:p-4 md:p-6 rounded-full shadow-lg"
               >
-                <svg className="w-12 h-12 text-[#7cb342]" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-[#7cb342]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               </motion.div>
@@ -151,9 +151,9 @@ const OurVibe = () => {
                 initial={{ y: 0 }}
                 animate={{ y: [10, -10, 10] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-20 left-10 bg-white p-6 rounded-full shadow-lg"
+                className="absolute bottom-10 sm:bottom-14 md:bottom-20 left-4 sm:left-6 md:left-10 bg-white p-3 sm:p-4 md:p-6 rounded-full shadow-lg"
               >
-                <svg className="w-12 h-12 text-[rgb(1,62,139)]" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-[rgb(1,62,139)]" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                 </svg>
               </motion.div>
@@ -162,9 +162,9 @@ const OurVibe = () => {
                 initial={{ y: 0 }}
                 animate={{ y: [-15, 15, -15] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-1/2 right-0 bg-white p-6 rounded-full shadow-lg"
+                className="absolute top-1/2 right-0 bg-white p-3 sm:p-4 md:p-6 rounded-full shadow-lg"
               >
-                <svg className="w-12 h-12 text-[#7cb342]" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-[#7cb342]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                 </svg>
               </motion.div>
@@ -176,13 +176,13 @@ const OurVibe = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <div className="text-center bg-white/90 backdrop-blur-sm p-12 rounded-3xl shadow-2xl border-4 border-[#7cb342]">
-                  <div className="text-8xl font-bold text-[rgb(1,62,139)] mb-4">PURA</div>
-                  <div className="text-2xl font-semibold text-[#7cb342]">Absolute Purity</div>
-                  <div className="mt-4 flex items-center justify-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-[#7cb342] animate-pulse"></div>
-                    <div className="h-2 w-2 rounded-full bg-[#7cb342] animate-pulse" style={{ animationDelay: "0.2s" }}></div>
-                    <div className="h-2 w-2 rounded-full bg-[#7cb342] animate-pulse" style={{ animationDelay: "0.4s" }}></div>
+                <div className="text-center bg-white/90 backdrop-blur-sm p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 rounded-2xl sm:rounded-3xl shadow-2xl border-2 sm:border-4 border-[#7cb342]">
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold text-[rgb(1,62,139)] mb-2 sm:mb-3 md:mb-4">PURA</div>
+                  <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-[#7cb342]">Absolute Purity</div>
+                  <div className="mt-2 sm:mt-3 md:mt-4 flex items-center justify-center gap-1 sm:gap-2">
+                    <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#7cb342] animate-pulse"></div>
+                    <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#7cb342] animate-pulse" style={{ animationDelay: "0.2s" }}></div>
+                    <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#7cb342] animate-pulse" style={{ animationDelay: "0.4s" }}></div>
                   </div>
                 </div>
               </motion.div>

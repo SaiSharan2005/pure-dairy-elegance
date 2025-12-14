@@ -52,24 +52,24 @@ const Header = ({ isVisible = true }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
       <div className="relative bg-[rgb(1,62,139)] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
-        <div className="w-full h-[100px] flex items-center justify-between pl-0 pr-[15px]">
+        <div className="w-full h-[70px] sm:h-[80px] md:h-[90px] lg:h-[100px] flex items-center justify-between pl-0 pr-2 sm:pr-3 md:pr-[15px]">
           {/* Logo Section - Left */}
           <div className="flex items-center">
             <div className="logo">
-              <a href="#home" className="relative block h-[100px] overflow-visible">
+              <a href="#home" className="relative block h-[70px] sm:h-[80px] md:h-[90px] lg:h-[100px] overflow-visible">
                 {/* Video Logo - plays first */}
                 <video
                   ref={videoRef}
                   src={logoVideoUrl}
                   muted
                   playsInline
-                  className={`h-[180px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                  className={`h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 />
                 {/* Static Logo - shows after video ends */}
                 <img
                   src={logo}
                   alt="PURA - Absolute Purity"
-                  className={`h-[100px] w-auto transition-opacity duration-500 ${showStaticLogo ? 'opacity-100' : 'opacity-0'}`}
+                  className={`h-[70px] sm:h-[80px] md:h-[90px] lg:h-[100px] w-auto transition-opacity duration-500 ${showStaticLogo ? 'opacity-100' : 'opacity-0'}`}
                 />
               </a>
             </div>
@@ -146,24 +146,24 @@ const Header = ({ isVisible = true }: HeaderProps) => {
             aria-label="Toggle menu"
           >
             <style>{`@media (min-width: 1024px) { #mobile-menu-toggle { display: none !important; } }`}</style>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={20} className="sm:w-6 sm:h-6" /> : <Menu size={20} className="sm:w-6 sm:h-6" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="px-4 pb-4 border-t border-white/20 animate-fade-in" id="mobile-nav">
+          <div className="px-3 sm:px-4 pb-3 sm:pb-4 border-t border-white/20 animate-fade-in" id="mobile-nav">
             <style>{`@media (min-width: 1024px) { #mobile-nav { display: none !important; } }`}</style>
-            <div className="flex flex-col gap-3 pt-4">
+            <div className="flex flex-col gap-2 sm:gap-3 pt-3 sm:pt-4">
               {/* Mobile Social Icons */}
-              <div className="flex items-center gap-4 pb-3 border-b border-white/20">
+              <div className="flex items-center gap-3 sm:gap-4 pb-2 sm:pb-3 border-b border-white/20">
                 <a
                   href="https://www.facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-white/80 transition-colors"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={18} className="sm:w-5 sm:h-5" />
                 </a>
                 <a
                   href="https://www.instagram.com"
@@ -171,14 +171,14 @@ const Header = ({ isVisible = true }: HeaderProps) => {
                   rel="noopener noreferrer"
                   className="text-white hover:text-white/80 transition-colors"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={18} className="sm:w-5 sm:h-5" />
                 </a>
-                <span className="text-white text-sm">Available on:</span>
+                <span className="text-white text-xs sm:text-sm">Available on:</span>
                 <a
                   href="https://www.amazon.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-white/80 transition-colors text-sm"
+                  className="text-white hover:text-white/80 transition-colors text-xs sm:text-sm"
                 >
                   Amazon
                 </a>
@@ -187,35 +187,35 @@ const Header = ({ isVisible = true }: HeaderProps) => {
               {/* Mobile Menu Links */}
               <a
                 href="#home"
-                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
+                className="text-white hover:text-white/80 transition-colors py-1.5 sm:py-2 font-medium uppercase text-sm sm:text-base"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </a>
               <a
                 href="#about"
-                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
+                className="text-white hover:text-white/80 transition-colors py-1.5 sm:py-2 font-medium uppercase text-sm sm:text-base"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Our Vibe
               </a>
               <a
                 href="#products"
-                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
+                className="text-white hover:text-white/80 transition-colors py-1.5 sm:py-2 font-medium uppercase text-sm sm:text-base"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </a>
               <a
                 href="#products2"
-                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
+                className="text-white hover:text-white/80 transition-colors py-1.5 sm:py-2 font-medium uppercase text-sm sm:text-base"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products 2
               </a>
               <a
                 href="#contact"
-                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
+                className="text-white hover:text-white/80 transition-colors py-1.5 sm:py-2 font-medium uppercase text-sm sm:text-base"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Reach Us
@@ -225,7 +225,7 @@ const Header = ({ isVisible = true }: HeaderProps) => {
                   window.location.href = "/collections/all";
                   setIsMenuOpen(false);
                 }}
-                className="text-white hover:text-white/80 transition-colors py-2 font-medium uppercase"
+                className="text-white hover:text-white/80 transition-colors py-1.5 sm:py-2 font-medium uppercase text-sm sm:text-base text-left"
               >
                 Shop Now
               </button>

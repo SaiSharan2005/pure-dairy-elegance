@@ -172,7 +172,15 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             initial={{ opacity: 0, scale: 0.3, y: 0 }}
             animate={
               logoMoving
-                ? { opacity: 1, scale: 1.2, y: -window.innerHeight / 2 + 60 }
+                ? {
+                    opacity: 1,
+                    scale: window.innerWidth < 640 ? 1 : 1.2,
+                    y: window.innerWidth < 640
+                      ? -window.innerHeight / 2 + 80
+                      : window.innerWidth < 768
+                      ? -window.innerHeight / 2 + 70
+                      : -window.innerHeight / 2 + 60,
+                  }
                 : { opacity: 1, scale: 1, y: 0 }
             }
             transition={{
@@ -185,8 +193,10 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             <img
               src={logo}
               alt="Logo"
-              className={`object-contain ${
-                logoMoving ? "w-56 h-56" : "w-96 h-96"
+              className={`object-contain transition-all duration-300 ${
+                logoMoving
+                  ? "w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56"
+                  : "w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"
               }`}
             />
           </motion.div>
@@ -196,12 +206,13 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }} 
-              className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+              transition={{ duration: 1, delay: 0.5 }}
+              className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-4"
             >
-              <div className="text-center px-10 py-6 backdrop-blur-md bg-black/20">
-                <h2 className="text-4xl md:text-5xl font-bold text-white whitespace-nowrap">
-                GrandMother’s Secret , <span className="text-green-400">Modern Purity</span>
+              <div className="text-center px-4 py-4 sm:px-6 sm:py-5 md:px-10 md:py-6 backdrop-blur-md bg-black/20 rounded-lg max-w-[90vw]">
+                <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-white">
+                  <span className="block sm:inline">GrandMother's Secret,</span>{" "}
+                  <span className="text-green-400 block sm:inline">Modern Purity</span>
                 </h2>
               </div>
             </motion.div>
@@ -217,14 +228,14 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
                 setShowSplash(false);
                 onComplete();
               }}
-              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer hover:opacity-80 transition-opacity bg-transparent border-none p-0"
+              className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer hover:opacity-80 transition-opacity bg-transparent border-none p-0"
             >
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <svg
-                  className="w-6 h-6 text-white opacity-70 hover:opacity-100"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-white opacity-70 hover:opacity-100"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
