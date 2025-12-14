@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #333;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            background: #000;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Loading Test</h1>
+
+    <div class="video-container">
+        <h2>Test 1: havepura.com video</h2>
+        <video controls autoplay muted loop playsinline>
+            <source src="https://www.havepura.com/cdn/shop/t/2/assets/gaushala.mp4" type="video/mp4">
+            Your browser does not support video.
+        </video>
+    </div>
+
+    <div class="video-container">
+        <h2>Test 2: With full URL query param</h2>
+        <video controls autoplay muted loop playsinline>
+            <source src="https://www.havepura.com/cdn/shop/t/2/assets/gaushala.mp4?v=110552641313234753981765397645" type="video/mp4">
+            Your browser does not support video.
+        </video>
+    </div>
+
+    <script>
+        // Log video events
+        document.querySelectorAll('video').forEach((video, index) => {
+            video.addEventListener('loadstart', () => console.log(`Video ${index+1}: loadstart`));
+            video.addEventListener('loadeddata', () => console.log(`Video ${index+1}: loadeddata`));
+            video.addEventListener('canplay', () => console.log(`Video ${index+1}: canplay`));
+            video.addEventListener('playing', () => console.log(`Video ${index+1}: playing`));
+            video.addEventListener('error', (e) => console.log(`Video ${index+1}: error`, video.error));
+        });
+    </script>
+</body>
+</html>
