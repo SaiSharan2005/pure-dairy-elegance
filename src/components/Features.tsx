@@ -46,20 +46,20 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="bg-gradient-to-b from-white to-blue-50 py-16 px-4 snap-section" ref={ref}>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <section id="features" className="bg-gradient-to-b from-white to-blue-50 py-10 sm:py-12 md:py-16 px-4 sm:px-6 snap-section" ref={ref}>
+      <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="flex flex-col items-center space-y-6"
+            className="flex flex-col items-center space-y-3 sm:space-y-4 md:space-y-6"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <div className="animate-fadeInUp">
+            <div className="animate-fadeInUp [&>svg]:text-3xl sm:[&>svg]:text-4xl md:[&>svg]:text-5xl lg:[&>svg]:text-6xl">
               {feature.icon}
             </div>
-            <h4 className="text-2xl font-semibold">{feature.title}</h4>
+            <h4 className="text-sm sm:text-base md:text-lg lg:text-2xl font-semibold">{feature.title}</h4>
           </motion.div>
         ))}
       </div>

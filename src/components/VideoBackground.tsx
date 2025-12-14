@@ -85,7 +85,7 @@ const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
           <img
             src={logo}
             alt="Logo"
-            className="h-32 w-auto object-contain"
+            className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain"
           />
         </motion.div>
       </div>
@@ -94,10 +94,10 @@ const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2"
       >
         <svg
-          className="w-6 h-6 text-white opacity-70"
+          className="w-5 h-5 sm:w-6 sm:h-6 text-white opacity-70"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

@@ -33,14 +33,14 @@ const Footer = () => {
     <footer className="relative bg-[rgb(1,62,139)] text-white overflow-hidden snap-section">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-[#7cb342]/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-20 sm:-top-40 -left-20 sm:-left-40 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 bg-[#7cb342]/20 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-20 sm:-bottom-40 -right-20 sm:-right-40 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 bg-white/10 rounded-full blur-3xl"></div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-16 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 relative z-10">
         {/* Main Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 lg:gap-12 mb-6 sm:mb-8 md:mb-12">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
             <motion.div
@@ -49,11 +49,11 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <img src={logo} alt="PURA" className="h-14 w-auto mb-4 brightness-0 invert" />
-              <p className="text-white/70 text-sm mb-6 leading-relaxed">
+              <img src={logo} alt="PURA" className="h-10 sm:h-12 md:h-14 w-auto mb-3 sm:mb-4 brightness-0 invert" />
+              <p className="text-white/70 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed">
                 IDITRI SUNRISE FOOD HUB PVT LTD - Delivering absolute purity in every sip since 2023.
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-2 sm:gap-3">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={index}
@@ -62,7 +62,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -3 }}
                     whileTap={{ scale: 0.9 }}
-                    className="bg-white/10 hover:bg-[#7cb342] p-3 rounded-xl transition-all duration-300"
+                    className="bg-white/10 hover:bg-[#7cb342] p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl transition-all duration-300 [&>svg]:w-4 [&>svg]:h-4 sm:[&>svg]:w-5 sm:[&>svg]:h-5"
                     aria-label={social.label}
                   >
                     {social.icon}
@@ -79,17 +79,17 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-bold mb-6 text-white">
+            <h3 className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 md:mb-6 text-white">
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-white/70 hover:text-[#7cb342] transition-colors flex items-center gap-2 group"
+                    className="text-white/70 hover:text-[#7cb342] transition-colors flex items-center gap-1.5 sm:gap-2 group text-xs sm:text-sm"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#7cb342] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#7cb342] opacity-0 group-hover:opacity-100 transition-opacity"></span>
                     {link.name}
                   </a>
                 </li>
@@ -103,16 +103,16 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="col-span-2 md:col-span-1"
+            className="col-span-1 md:col-span-1"
           >
-            <h3 className="text-lg font-bold mb-6 text-white">
+            <h3 className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 md:mb-6 text-white">
               Our Products
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {products.map((product, index) => (
-                <li key={index} className="flex items-center gap-2">
-                  <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${product.gradient}`}></span>
-                  <span className="text-white/70 hover:text-[#7cb342] transition-colors cursor-pointer">
+                <li key={index} className="flex items-center gap-1.5 sm:gap-2">
+                  <span className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r ${product.gradient}`}></span>
+                  <span className="text-white/70 hover:text-[#7cb342] transition-colors cursor-pointer text-xs sm:text-sm">
                     {product.name}
                   </span>
                 </li>
@@ -128,36 +128,36 @@ const Footer = () => {
             viewport={{ once: true }}
             className="col-span-2 md:col-span-1"
           >
-            <h3 className="text-lg font-bold mb-6 text-white">
+            <h3 className="text-sm sm:text-base md:text-lg font-bold mb-3 sm:mb-4 md:mb-6 text-white">
               Contact Us
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
               <li>
-                <a href="mailto:info@havepura.com" className="flex items-start gap-3 group">
-                  <div className="bg-white/10 p-2 rounded-lg group-hover:bg-[#7cb342] transition-all">
-                    <Mail size={16} />
+                <a href="mailto:info@havepura.com" className="flex items-start gap-2 sm:gap-3 group">
+                  <div className="bg-white/10 p-1.5 sm:p-2 rounded-md sm:rounded-lg group-hover:bg-[#7cb342] transition-all">
+                    <Mail size={14} className="sm:w-4 sm:h-4" />
                   </div>
-                  <span className="text-white/70 group-hover:text-white transition-colors text-sm">
+                  <span className="text-white/70 group-hover:text-white transition-colors text-xs sm:text-sm">
                     info@havepura.com
                   </span>
                 </a>
               </li>
               <li>
-                <a href="tel:+911234567890" className="flex items-start gap-3 group">
-                  <div className="bg-white/10 p-2 rounded-lg group-hover:bg-[#7cb342] transition-all">
-                    <Phone size={16} />
+                <a href="tel:+911234567890" className="flex items-start gap-2 sm:gap-3 group">
+                  <div className="bg-white/10 p-1.5 sm:p-2 rounded-md sm:rounded-lg group-hover:bg-[#7cb342] transition-all">
+                    <Phone size={14} className="sm:w-4 sm:h-4" />
                   </div>
-                  <span className="text-white/70 group-hover:text-white transition-colors text-sm">
+                  <span className="text-white/70 group-hover:text-white transition-colors text-xs sm:text-sm">
                     +91 1234567890
                   </span>
                 </a>
               </li>
               <li>
-                <div className="flex items-start gap-3 group">
-                  <div className="bg-white/10 p-2 rounded-lg">
-                    <MapPin size={16} />
+                <div className="flex items-start gap-2 sm:gap-3 group">
+                  <div className="bg-white/10 p-1.5 sm:p-2 rounded-md sm:rounded-lg">
+                    <MapPin size={14} className="sm:w-4 sm:h-4" />
                   </div>
-                  <span className="text-white/70 text-sm">
+                  <span className="text-white/70 text-xs sm:text-sm">
                     Hyderabad, Telangana<br />India
                   </span>
                 </div>
@@ -172,14 +172,14 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           viewport={{ once: true }}
-          className="border-t border-white/20 pt-8"
+          className="border-t border-white/20 pt-4 sm:pt-6 md:pt-8"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/60 text-sm text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-2 sm:gap-3 md:gap-4">
+            <p className="text-white/60 text-[10px] sm:text-xs md:text-sm text-center md:text-left">
               © {currentYear} PURA - Absolute Purity. All rights reserved.
             </p>
-            <p className="text-white/60 text-sm flex items-center gap-1">
-              Made with <Heart size={14} className="text-red-500 fill-red-500" /> by IDITRI SUNRISE FOOD HUB PVT LTD
+            <p className="text-white/60 text-[10px] sm:text-xs md:text-sm flex items-center gap-1">
+              Made with <Heart size={12} className="sm:w-3.5 sm:h-3.5 text-red-500 fill-red-500" /> by IDITRI SUNRISE FOOD HUB PVT LTD
             </p>
           </div>
         </motion.div>
