@@ -15,4 +15,14 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Shopify requires a single JS bundle (no chunks, no dynamic imports)
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        entryFileNames: "react-homepage.js",
+        assetFileNames: "react-style.css",
+      },
+    },
+  },
 }));

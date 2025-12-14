@@ -3,9 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
-import milkBottle from "@/assets/milk-bottle.png";
-import almond from "@/assets/almond.png";
-import walnut from "@/assets/walnut.png";
+
+const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
+const milkBottle = `${CDN_URL}/milk-bottle.png`;
+const almond = `${CDN_URL}/almond.png`;
+const walnut = `${CDN_URL}/walnut.png`;
 
 const products = [
   {

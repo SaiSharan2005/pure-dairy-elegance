@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/assets/logo-trans.png";
+
+const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
+const logo = `${CDN_URL}/logo-trans.png`;
+// YouTube Shorts video ID: oSt4IGNPChs
+const youtubeVideoId = "oSt4IGNPChs";
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -11,7 +15,6 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [logoMoving, setLogoMoving] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
 
   // Phase 1: Blue fill and logo appear (0-2.5s)
   useEffect(() => {
@@ -90,62 +93,65 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
           <div className="absolute inset-0">
             {/* Phase 1: Blue fill from bottom to top */}
             {!logoMoving && (
-              <motion.div
-                initial={{ scaleY: 0 }}
-                animate={{ scaleY: 1 }}
-                transition={{
-                  duration: 2.5,
-                  ease: [0.25, 0.46, 0.45, 0.94],
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundColor: "rgba(1, 62, 139, 1)",
+                  animation: "blueFillUp 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
+                  transformOrigin: "bottom",
                 }}
-                className="absolute inset-0 origin-bottom"
-                style={{ backgroundColor: "rgba(1, 62, 139, 1)" }}
-              />
+              >
+                <style>{`
+                  @keyframes blueFillUp {
+                    from {
+                      transform: scaleY(0);
+                    }
+                    to {
+                      transform: scaleY(1);
+                    }
+                  }
+                `}</style>
+              </div>
             )}
 
             {/* Phase 2: Fade out blue background during logo transition */}
             {logoMoving && (
-              <motion.div
+              <div
                 className="absolute inset-0"
-                style={{ backgroundColor: "rgba(1, 62, 139, 1)" }}
-                animate={{ opacity: 0 }}
-                transition={{ duration: 3, delay: 0 }}
-              />
+                style={{
+                  backgroundColor: "rgba(1, 62, 139, 1)",
+                  animation: "fadeOut 3s ease-out forwards",
+                }}
+              >
+                <style>{`
+                  @keyframes fadeOut {
+                    from {
+                      opacity: 1;
+                    }
+                    to {
+                      opacity: 0;
+                    }
+                  }
+                `}</style>
+              </div>
             )}
 
-            {/* Video Background - Fade in during Phase 2 */}
+            {/* YouTube Video Background - Fade in during Phase 2 */}
             {logoMoving && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 3, delay: 0 }}
-                className="absolute inset-0"
+                className="absolute inset-0 overflow-hidden"
               >
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-cover"
-                  onLoadedData={() => {
-                    console.log("Video loaded successfully");
-                    setVideoLoaded(true);
-                  }}
-                  onError={(e) => {
-                    console.error("Video failed to load:", e);
-                    setVideoError(true);
-                  }}
-                  onCanPlay={(e) => {
-                    console.log("Video can play");
-                    const video = e.currentTarget;
-                    video.play().catch((err) => {
-                      console.error("Video play failed:", err);
-                    });
-                  }}
-                >
-                  <source src="gaushala.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+                  className="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                  style={{ border: 'none' }}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  onLoad={() => setVideoLoaded(true)}
+                />
 
                 {/* Dark Overlay */}
                 <motion.div
@@ -231,18 +237,10 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             </motion.button>
           )}
 
-          {/* Loading/Error State during video loading */}
-          {logoMoving && !videoLoaded && !videoError && (
+          {/* Loading State during video loading */}
+          {logoMoving && !videoLoaded && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
               <div className="text-white text-lg opacity-50">Loading video...</div>
-            </div>
-          )}
-
-          {videoError && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-              <div className="text-white text-lg opacity-50">
-                Video could not be loaded
-              </div>
             </div>
           )}
         </motion.div>

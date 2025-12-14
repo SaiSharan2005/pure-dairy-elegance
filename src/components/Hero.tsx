@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
-import heroBanner from "@/assets/hero-banner.jpg";
-import productPista from "@/assets/product-pista.jpg";
-import productBadam from "@/assets/product-badam.png";
-import productChocolate from "@/assets/product-chocolate.png";
 import { ArrowRight, Sparkles, Award, Leaf, Heart } from "lucide-react";
 import { motion } from "framer-motion";
+
+const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
+const productPista = `${CDN_URL}/product-pista.jpg`;
+const productBadam = `${CDN_URL}/product-badam.png`;
+const productChocolate = `${CDN_URL}/product-chocolate.png`;
 
 const Hero = () => {
   return (

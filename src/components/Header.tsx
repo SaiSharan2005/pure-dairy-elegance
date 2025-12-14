@@ -1,7 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Menu, X, Facebook, Instagram } from "lucide-react";
-import logo from "@/assets/logo-trans.png";
-import logoVideo from "/logo -animation.mp4";
+
+const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
+const logo = `${CDN_URL}/logo-trans.png`;
+// YouTube video ID for logo animation: BBBM87jk4N4
+const logoYoutubeId = "BBBM87jk4N4";
 
 interface HeaderProps {
   isVisible?: boolean;
@@ -9,71 +12,41 @@ interface HeaderProps {
 
 const Header = ({ isVisible = true }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showStaticLogo, setShowStaticLogo] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    let loopTimeout: NodeJS.Timeout;
-
-    if (video) {
-      // Start video after 2 seconds initially
-      const startTimeout = setTimeout(() => {
-        setShowStaticLogo(false);
-        video.currentTime = 0;
-        video.play();
-      }, 2000);
-
-      const handleEnded = () => {
-        // Show static logo when video ends
-        setShowStaticLogo(true);
-
-        // After 2 seconds, play video again
-        loopTimeout = setTimeout(() => {
-          setShowStaticLogo(false);
-          video.currentTime = 0;
-          video.play();
-        }, 2000);
-      };
-
-      video.addEventListener('ended', handleEnded);
-
-      return () => {
-        clearTimeout(startTimeout);
-        clearTimeout(loopTimeout);
-        video.removeEventListener('ended', handleEnded);
-      };
-    }
-  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
       <div className="relative bg-[rgb(1,62,139)] shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
         <div className="w-full h-[100px] flex items-center justify-between px-[50px]">
           {/* Logo Section - Left */}
-          <div className="flex items-center mt-19">
+          <div className="flex items-center">
             <div className="logo">
-              <a href="#home" className="relative block h-[100px] overflow-visible">
-                {/* Video Logo - plays first */}
-                <video
-                  ref={videoRef}
-                  src={logoVideo}
-                  muted
-                  playsInline
-                  className={`h-[150px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-                />
-                {/* Static Logo - shows after video ends */}
-                <img
-                  src={logo}
-                  alt="PURA - Absolute Purity"
-                  className={`h-[100px] w-auto transition-opacity duration-500 ${showStaticLogo ? 'opacity-100' : 'opacity-0'}`}
+              <a href="#home" className="relative block h-[80px] w-[200px] overflow-hidden">
+                {/* YouTube Video Logo */}
+                <style>{`
+                  .logo iframe {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(1.5);
+                    pointer-events: none;
+                    border: none;
+                    width: 200px;
+                    height: 112px;
+                  }
+                `}</style>
+                <iframe
+                  src={`https://www.youtube.com/embed/${logoYoutubeId}?autoplay=1&mute=1&loop=1&playlist=${logoYoutubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1`}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
                 />
               </a>
             </div>
           </div>
 
           {/* Right Section - Desktop Only */}
-          <div className="hidden lg:flex flex-col items-end gap-2">
+          {/* Using inline style for display to avoid conflict with Shopify's base.css .hidden class */}
+          <div className="flex-col items-end gap-2" style={{ display: 'none' }} id="desktop-nav">
+            <style>{`@media (min-width: 1024px) { #desktop-nav { display: flex !important; } }`}</style>
             {/* Top Row - Social Icons */}
             <div className="flex items-center gap-5">
               <a
@@ -135,17 +108,20 @@ const Header = ({ isVisible = true }: HeaderProps) => {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden p-2 text-white"
+            className="p-2 text-white"
+            id="mobile-menu-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
+            <style>{`@media (min-width: 1024px) { #mobile-menu-toggle { display: none !important; } }`}</style>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden px-4 pb-4 border-t border-white/20 animate-fade-in">
+          <div className="px-4 pb-4 border-t border-white/20 animate-fade-in" id="mobile-nav">
+            <style>{`@media (min-width: 1024px) { #mobile-nav { display: none !important; } }`}</style>
             <div className="flex flex-col gap-3 pt-4">
               {/* Mobile Social Icons */}
               <div className="flex items-center gap-4 pb-3 border-b border-white/20">

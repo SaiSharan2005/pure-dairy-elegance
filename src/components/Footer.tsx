@@ -1,6 +1,8 @@
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Heart } from "lucide-react";
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+
+const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
+const logo = `${CDN_URL}/logo.png`;
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

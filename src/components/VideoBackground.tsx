@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import logo from "@/assets/logo-trans.png";
+
+const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
+const logo = `${CDN_URL}/logo-trans.png`;
+// YouTube Shorts video ID: oSt4IGNPChs
+const youtubeVideoId = "oSt4IGNPChs";
 
 interface VideoBackgroundProps {
   onScroll: () => void;
@@ -8,7 +12,6 @@ interface VideoBackgroundProps {
 
 const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
   const [hasScrolled, setHasScrolled] = useState(false);
-  const [videoError, setVideoError] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
@@ -50,52 +53,22 @@ const VideoBackground = ({ onScroll }: VideoBackgroundProps) => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="w-full h-full object-cover"
-        onLoadedData={() => {
-          console.log("Video loaded successfully");
-          setVideoLoaded(true);
-        }}
-        onError={(e) => {
-          console.error("Video failed to load:", e);
-          setVideoError(true);
-        }}
-        onCanPlay={(e) => {
-          console.log("Video can play");
-          const video = e.currentTarget;
-          video.play().catch((err) => {
-            console.error("Video play failed:", err);
-          });
-        }}
-        onLoadStart={() => console.log("Video load started")}
-        onProgress={(e) => {
-          const video = e.currentTarget;
-          if (video.buffered.length > 0) {
-            console.log("Video buffering:", (video.buffered.end(0) / video.duration) * 100, "%");
-          }
-        }}
-      >
-        {/* <source src="/gaushala.mp4" type="video/mp4" /> */}
-        <source src="gaushala.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* YouTube Video Background */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <iframe
+          src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+          className="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          style={{ border: 'none' }}
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          onLoad={() => setVideoLoaded(true)}
+        />
+      </div>
 
-      {/* Loading/Error State */}
-      {!videoLoaded && !videoError && (
+      {/* Loading State */}
+      {!videoLoaded && (
         <div className="absolute inset-0 flex items-center justify-center bg-black">
           <div className="text-white text-lg">Loading video...</div>
-        </div>
-      )}
-
-      {videoError && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black">
-          <div className="text-white text-lg">Video could not be loaded</div>
         </div>
       )}
 

@@ -1,10 +1,12 @@
-import productPista from "@/assets/product-pista.jpg";
-import productBadam from "@/assets/product-badam.png";
-import productChocolate from "@/assets/product-chocolate.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ShoppingCart, Heart, Star, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+
+const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
+const productPista = `${CDN_URL}/product-pista.jpg`;
+const productBadam = `${CDN_URL}/product-badam.png`;
+const productChocolate = `${CDN_URL}/product-chocolate.png`;
 
 const products = [
   {
@@ -234,7 +236,7 @@ const Products = () => {
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.5, delay: 0.4 }}
-                          className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+                          className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 whitespace-nowrap overflow-hidden text-ellipsis"
                         >
                           {currentProduct.name}
                         </motion.h3>
