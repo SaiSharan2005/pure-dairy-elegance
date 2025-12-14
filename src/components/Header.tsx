@@ -140,13 +140,13 @@ const Header = ({ isVisible = true }: HeaderProps) => {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="p-2 text-white"
+            className="p-2 text-white z-20 relative"
             id="mobile-menu-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
             <style>{`@media (min-width: 1024px) { #mobile-menu-toggle { display: none !important; } }`}</style>
-            {isMenuOpen ? <X size={20} className="sm:w-6 sm:h-6" /> : <Menu size={20} className="sm:w-6 sm:h-6" />}
+            {isMenuOpen ? <X size={24} className="sm:w-7 sm:h-7" /> : <Menu size={24} className="sm:w-7 sm:h-7" />}
           </button>
         </div>
 
