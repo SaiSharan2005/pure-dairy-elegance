@@ -63,7 +63,7 @@ const Header = ({ isVisible = true }: HeaderProps) => {
                   src={logoVideoUrl}
                   muted
                   playsInline
-                  className={`h-[85px] sm:h-[95px] md:h-[110px] lg:h-[120px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                  className={`h-[70px] sm:h-[90px] md:h-[130px] lg:h-[160px] xl:h-[180px] w-auto transition-opacity duration-500 absolute top-0 left-0 z-10 ${showStaticLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 />
                 {/* Static Logo - shows after video ends */}
                 <img
