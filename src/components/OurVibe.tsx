@@ -10,7 +10,7 @@ const OurVibe = () => {
     <section
       id="about"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-green-50 snap-section"
+      className="relative min-h-fit lg:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-green-50 snap-section"
     >
       {/* Top Wave Decoration - Seamless Blend */}
       <div className="absolute top-0 left-0 right-0 -translate-y-full">

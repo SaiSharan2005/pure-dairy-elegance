@@ -133,22 +133,22 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 sm:space-y-4">
               <li>
-                <a href="mailto:info@havepura.com" className="flex items-start gap-2 sm:gap-3 group">
+                <a href="mailto:contact@havepura.com" className="flex items-start gap-2 sm:gap-3 group">
                   <div className="bg-white/10 p-1.5 sm:p-2 rounded-md sm:rounded-lg group-hover:bg-[#7cb342] transition-all">
                     <Mail size={14} className="sm:w-4 sm:h-4" />
                   </div>
                   <span className="text-white/70 group-hover:text-white transition-colors text-xs sm:text-sm">
-                    info@havepura.com
+                    contact@havepura.com
                   </span>
                 </a>
               </li>
               <li>
-                <a href="tel:+911234567890" className="flex items-start gap-2 sm:gap-3 group">
+                <a href="tel:+919550156969" className="flex items-start gap-2 sm:gap-3 group">
                   <div className="bg-white/10 p-1.5 sm:p-2 rounded-md sm:rounded-lg group-hover:bg-[#7cb342] transition-all">
                     <Phone size={14} className="sm:w-4 sm:h-4" />
                   </div>
                   <span className="text-white/70 group-hover:text-white transition-colors text-xs sm:text-sm">
-                    +91 1234567890
+                    +91 9550156969
                   </span>
                 </a>
               </li>

@@ -30,13 +30,13 @@ const ContactUs = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      details: ["+91 1234567890", "+91 0987654321"],
+      details: ["+91 9550156969"],
       gradient: "from-blue-500 to-cyan-500",
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      details: ["info@pura.com", "support@pura.com"],
+      details: ["contact@havepura.com"],
       gradient: "from-purple-500 to-pink-500",
     },
     {
@@ -145,7 +145,7 @@ const ContactUs = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg sm:rounded-xl border border-gray-300 focus:border-[#7cb342] focus:ring-2 focus:ring-[#7cb342]/20 outline-none transition-all text-sm sm:text-base"
-                    placeholder="+91 1234567890"
+                    placeholder="+91 9550156969"
                   />
                 </div>
 
@@ -240,7 +240,7 @@ const ContactUs = () => {
                 </motion.a>
 
                 <motion.a
-                  href="mailto:info@pura.com"
+                  href="mailto:contact@havepura.com"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                   className="bg-white/20 backdrop-blur-sm p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl hover:bg-white/30 transition-all"
@@ -249,7 +249,7 @@ const ContactUs = () => {
                 </motion.a>
 
                 <motion.a
-                  href="tel:+911234567890"
+                  href="tel:+919550156969"
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   whileTap={{ scale: 0.9 }}
                   className="bg-white/20 backdrop-blur-sm p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl hover:bg-white/30 transition-all"

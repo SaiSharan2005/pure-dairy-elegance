@@ -108,7 +108,7 @@ const Products = () => {
   };
 
   return (
-    <section id="products2" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white snap-section" ref={ref}>
+    <section id="products2" className="relative min-h-fit lg:min-h-screen flex items-center justify-center overflow-hidden bg-white snap-section py-12 sm:py-16 md:py-20" ref={ref}>
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 sm:-top-40 -right-20 sm:-right-40 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-green-200/30 rounded-full blur-3xl"></div>
