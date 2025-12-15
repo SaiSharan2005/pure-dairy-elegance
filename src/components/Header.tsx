@@ -155,35 +155,6 @@ const Header = ({ isVisible = true }: HeaderProps) => {
           <div className="px-3 sm:px-4 pb-3 sm:pb-4 border-t border-white/20 animate-fade-in" id="mobile-nav">
             <style>{`@media (min-width: 1024px) { #mobile-nav { display: none !important; } }`}</style>
             <div className="flex flex-col gap-2 sm:gap-3 pt-3 sm:pt-4">
-              {/* Mobile Social Icons */}
-              <div className="flex items-center gap-3 sm:gap-4 pb-2 sm:pb-3 border-b border-white/20">
-                <a
-                  href="https://www.facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-white/80 transition-colors"
-                >
-                  <Facebook size={18} className="sm:w-5 sm:h-5" />
-                </a>
-                <a
-                  href="https://www.instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-white/80 transition-colors"
-                >
-                  <Instagram size={18} className="sm:w-5 sm:h-5" />
-                </a>
-                <span className="text-white text-xs sm:text-sm">Available on:</span>
-                <a
-                  href="https://www.amazon.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-white/80 transition-colors text-xs sm:text-sm"
-                >
-                  Amazon
-                </a>
-              </div>
-
               {/* Mobile Menu Links */}
               <a
                 href="#home"
