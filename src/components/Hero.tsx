@@ -58,17 +58,6 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="space-y-4 sm:space-y-6 md:space-y-8"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-[#7cb342] to-green-600 text-white px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded-full shadow-lg"
-            >
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="font-semibold text-xs sm:text-sm uppercase tracking-wider">Since 2023</span>
-            </motion.div>
-
             {/* Main Heading */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
