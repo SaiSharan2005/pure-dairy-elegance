@@ -118,7 +118,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-[rgb(1,62,139)] to-[#7cb342] hover:shadow-xl text-white font-semibold text-sm sm:text-base md:text-lg px-5 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 rounded-xl group transition-all"
-                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.location.href = "/collections/all"}
               >
                 Explore Products
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
