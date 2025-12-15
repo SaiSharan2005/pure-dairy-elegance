@@ -200,18 +200,11 @@ const Header = ({ isVisible = true }: HeaderProps) => {
                 Our Vibe
               </a>
               <a
-                href="#products"
-                className="text-white hover:text-white/80 transition-colors py-1.5 sm:py-2 font-medium uppercase text-sm sm:text-base"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Products
-              </a>
-              <a
                 href="#products2"
                 className="text-white hover:text-white/80 transition-colors py-1.5 sm:py-2 font-medium uppercase text-sm sm:text-base"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Products 2
+                Products
               </a>
               <a
                 href="#contact"

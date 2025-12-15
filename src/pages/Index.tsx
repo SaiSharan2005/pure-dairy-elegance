@@ -18,7 +18,10 @@ const Index = ({ showHeader = true }: IndexProps) => {
       <Hero />
       <Features />
       <OurVibe />
-      <ProductCarousel showHeader={false} />
+      {/* ProductCarousel hidden on mobile, only shows on md screens and up */}
+      <div className="hidden md:block">
+        <ProductCarousel showHeader={false} />
+      </div>
       <Products />
       <ContactUs />
       <Footer />
