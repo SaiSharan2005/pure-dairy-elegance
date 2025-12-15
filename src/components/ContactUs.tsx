@@ -229,7 +229,7 @@ const ContactUs = () => {
                 </motion.a>
 
                 <motion.a
-                  href="https://www.instagram.com"
+                  href="https://www.instagram.com/puramilkandmilkproducts"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: -5 }}

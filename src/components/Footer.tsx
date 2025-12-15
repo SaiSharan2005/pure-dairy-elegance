@@ -25,7 +25,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: <Facebook size={20} />, href: "https://facebook.com", label: "Facebook" },
-    { icon: <Instagram size={20} />, href: "https://instagram.com", label: "Instagram" },
+    { icon: <Instagram size={20} />, href: "https://www.instagram.com/puramilkandmilkproducts", label: "Instagram" },
     { icon: <Twitter size={20} />, href: "https://twitter.com", label: "Twitter" },
   ];
 
