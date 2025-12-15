@@ -19,7 +19,8 @@ const Index = ({ showHeader = true }: IndexProps) => {
       <Features />
       <OurVibe />
       {/* ProductCarousel hidden on mobile, only shows on md screens and up */}
-      <div className="hidden md:block">
+      <div id="product-carousel-wrapper" style={{ display: 'none' }}>
+        <style>{`@media (min-width: 768px) { #product-carousel-wrapper { display: block !important; } }`}</style>
         <ProductCarousel showHeader={false} />
       </div>
       <Products />
