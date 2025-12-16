@@ -3,10 +3,12 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ShoppingCart, Heart, Star, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 
-const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
-const productPista = `${CDN_URL}/product-pista.jpg`;
-const productBadam = `${CDN_URL}/product-badam.png`;
-const productChocolate = `${CDN_URL}/product-chocolate.png`;
+const productChocolate = "https://cdn.shopify.com/s/files/1/0958/9892/7470/files/WhatsAppImage2025-12-11at6.41.56PM.jpg?v=1765863173";
+const productPista = "https://cdn.shopify.com/s/files/1/0958/9892/7470/files/WhatsAppImage2025-12-11at5.44.50PM.jpg?v=1765863069";
+const productBadam = "https://cdn.shopify.com/s/files/1/0958/9892/7470/files/WhatsAppImage2025-12-11at5.44.49PM.jpg?v=1765862877";
+const cowGheeTin = "https://cdn.shopify.com/s/files/1/0958/9892/7470/files/WhatsAppImage2025-12-11at6.41.48PM_1.jpg?v=1765863374";
+const cowGhee1Liter = "https://cdn.shopify.com/s/files/1/0958/9892/7470/files/WhatsAppImage2025-12-11at6.41.48PM_2.jpg?v=1765863495";
+const cowGheePremiumJar = "https://cdn.shopify.com/s/files/1/0958/9892/7470/files/WhatsAppImage2025-12-11at6.41.48PM.jpg?v=1765863809";
 
 const products = [
   {
@@ -18,6 +20,7 @@ const products = [
     bgGradient: "from-emerald-50 to-green-100",
     features: ["100% Natural", "Rich in Protein", "No Preservatives"],
     rating: 4.8,
+    shopUrl: "https://www.havepura.com/products/pista-milk",
   },
   {
     name: "Badam Milk",
@@ -28,6 +31,7 @@ const products = [
     bgGradient: "from-orange-50 to-amber-100",
     features: ["Energy Boost", "Brain Food", "Fresh Daily"],
     rating: 4.9,
+    shopUrl: "https://www.havepura.com/products/badam-milk",
   },
   {
     name: "Chocolate Milk",
@@ -38,36 +42,40 @@ const products = [
     bgGradient: "from-amber-50 to-orange-100",
     features: ["Kids' Favorite", "Rich Cocoa", "Vitamin Enriched"],
     rating: 5.0,
+    shopUrl: "https://www.havepura.com/products/chocolate-milk",
   },
   {
-    name: "Pure Ghee",
-    description: "Traditional clarified butter made from pure cow's milk, perfect for cooking",
+    name: "Cow Ghee Tin",
+    description: "Premium quality cow ghee in a convenient tin packaging, perfect for everyday cooking",
     tagline: "Golden Goodness",
-    image: productPista, // Placeholder - replace with actual ghee image
-    gradient: "from-yellow-400 via-amber-500 to-orange-600",
+    image: cowGheeTin,
+    gradient: "from-yellow-400 via-amber-500 to-yellow-600",
     bgGradient: "from-yellow-50 to-amber-100",
-    features: ["Traditional Recipe", "Pure Cow Milk", "Rich Aroma"],
+    features: ["Pure Cow Milk", "Traditional Recipe", "Long Shelf Life"],
     rating: 4.9,
+    shopUrl: "https://www.havepura.com/products/cow-ghee",
   },
   {
-    name: "Buttermilk",
-    description: "Refreshing and cooling buttermilk, perfect for digestion and hydration",
-    tagline: "Cool & Refreshing",
-    image: productBadam, // Placeholder - replace with actual buttermilk image
-    gradient: "from-blue-400 via-cyan-500 to-teal-600",
-    bgGradient: "from-blue-50 to-cyan-100",
-    features: ["Probiotic Rich", "Digestive Aid", "Low Calorie"],
-    rating: 4.7,
-  },
-  {
-    name: "Sweet Lassi",
-    description: "Creamy and sweet yogurt-based drink, a traditional favorite for all ages",
-    tagline: "Sweet Tradition",
-    image: productChocolate, // Placeholder - replace with actual lassi image
-    gradient: "from-pink-400 via-rose-500 to-red-600",
-    bgGradient: "from-pink-50 to-rose-100",
-    features: ["Creamy Texture", "Naturally Sweet", "Cooling Effect"],
+    name: "Cow Ghee 1 Liter",
+    description: "Rich and aromatic cow ghee in a 1 liter pack for your family's daily needs",
+    tagline: "Family Pack",
+    image: cowGhee1Liter,
+    gradient: "from-amber-400 via-yellow-500 to-orange-500",
+    bgGradient: "from-amber-50 to-yellow-100",
+    features: ["Value Pack", "Rich Aroma", "100% Pure"],
     rating: 4.8,
+    shopUrl: "https://www.havepura.com/products/cow-ghee-1",
+  },
+  {
+    name: "Cow Ghee Premium Jar",
+    description: "Finest quality cow ghee in an elegant premium jar, ideal for special occasions",
+    tagline: "Premium Selection",
+    image: cowGheePremiumJar,
+    gradient: "from-yellow-500 via-amber-600 to-orange-600",
+    bgGradient: "from-yellow-50 to-orange-100",
+    features: ["Premium Quality", "Gift Ready", "A2 Cow Milk"],
+    rating: 5.0,
+    shopUrl: "https://www.havepura.com/products/cow-ghee-jar",
   },
 ];
 
@@ -287,7 +295,8 @@ const Products = () => {
                         </motion.div>
 
                         {/* Action Button */}
-                        <motion.button
+                        <motion.a
+                          href={currentProduct.shopUrl}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: 0.8 }}
@@ -297,7 +306,7 @@ const Products = () => {
                         >
                           <ShoppingCart size={18} className="sm:w-5 sm:h-5 md:w-[22px] md:h-[22px]" />
                           <span>Shop Now</span>
-                        </motion.button>
+                        </motion.a>
                       </div>
                     </div>
                   </div>

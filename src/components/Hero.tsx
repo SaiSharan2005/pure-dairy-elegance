@@ -2,10 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Award, Leaf, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 
-const CDN_URL = "https://e3wqz0-4z.myshopify.com/cdn/shop/t/2/assets";
-const productPista = `${CDN_URL}/product-pista.jpg`;
-const productBadam = `${CDN_URL}/product-badam.png`;
-const productChocolate = `${CDN_URL}/product-chocolate.png`;
+const heroProductImage = "https://cdn.shopify.com/s/files/1/0958/9892/7470/files/81d4553f-088a-4f65-ac51-49ebbc86c841_removalai_preview_1.png";
 
 const Hero = () => {
   return (
@@ -49,7 +46,7 @@ const Hero = () => {
 
       {/* Main Content Container */}
       <div className="container mx-auto px-4 sm:px-6 relative z-10 pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-12 sm:pb-16 md:pb-20">
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] xl:grid-cols-[1fr_1.4fr] gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
 
           {/* Left Side - Text Content */}
           <motion.div
@@ -166,69 +163,27 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:flex items-center justify-center w-full hero-product-section"
           >
             {/* Main Product Display */}
-            <div className="relative">
-              {/* Center Product - Large */}
+            <div className="relative flex items-center justify-center w-full">
+              {/* Single Product Image */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="relative z-20"
+                className="relative z-20 w-full flex items-center justify-center"
               >
                 <motion.div
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative"
+                  className="relative w-full flex items-center justify-center"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full blur-3xl opacity-30"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[rgb(1,62,139)] to-[#7cb342] rounded-full blur-3xl opacity-20"></div>
                   <img
-                    src={productPista}
-                    alt="Pista Milk"
-                    className="relative z-10 w-full max-w-md mx-auto drop-shadow-2xl"
-                  />
-                </motion.div>
-              </motion.div>
-
-              {/* Top Right Product - Small */}
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0, rotate: -10 }}
-                animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="absolute -top-10 -right-10 z-10"
-              >
-                <motion.div
-                  animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-amber-600 rounded-full blur-2xl opacity-30"></div>
-                  <img
-                    src={productBadam}
-                    alt="Badam Milk"
-                    className="relative z-10 w-48 drop-shadow-xl"
-                  />
-                </motion.div>
-              </motion.div>
-
-              {/* Bottom Left Product - Small */}
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0, rotate: 10 }}
-                animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="absolute -bottom-10 -left-10 z-10"
-              >
-                <motion.div
-                  animate={{ y: [0, -12, 0], rotate: [0, -5, 0] }}
-                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-600 to-orange-800 rounded-full blur-2xl opacity-30"></div>
-                  <img
-                    src={productChocolate}
-                    alt="Chocolate Milk"
-                    className="relative z-10 w-44 drop-shadow-xl"
+                    src={heroProductImage}
+                    alt="Pura Dairy Products"
+                    className="relative z-10 w-[700px] lg:w-[750px] xl:w-[850px] 2xl:w-[950px] h-auto drop-shadow-2xl"
                   />
                 </motion.div>
               </motion.div>
@@ -237,7 +192,7 @@ const Hero = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border-2 border-dashed border-gray-300 rounded-full opacity-20"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] lg:w-[800px] xl:w-[900px] 2xl:w-[1000px] h-[750px] lg:h-[800px] xl:h-[900px] 2xl:h-[1000px] border-2 border-dashed border-gray-300 rounded-full opacity-20"
               />
             </div>
           </motion.div>

@@ -143,3 +143,10 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Override Shopify's .hidden !important rule for responsive visibility */
+@media (min-width: 1024px) {
+  .hero-product-section {
+    display: flex !important;
+  }
+}
